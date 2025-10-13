@@ -1,0 +1,19 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+//    id 'com.android.application' version '8.4.1' apply false
+    id 'com.android.library' version '8.4.1' apply false
+    // Update the Kotlin plugin to a compatible version
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
+}
+
+def Properties properties = new Properties()
+properties.load(project.file("local.properties").newDataInputStream())
+ext {
+    isDevMode = (properties.getProperty("isDevMode", "false") == "true")
+    jnaDependency = 'net.java.dev.jna:jna:5.11.0@aar'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

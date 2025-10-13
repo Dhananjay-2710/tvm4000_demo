@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+
+    <!-- ===== Top Status Area ===== -->
+    <LinearLayout
+        android:id="@+id/topStatusArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints">
+
+        <include
+            layout="@layout/header_toolbar"
+            android:id="@+id/include_toolbar"/>
+
+        <ProgressBar
+            android:id="@+id/progressBarConnect"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/txtConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="@string/waiting_for_connection"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+    <!-- ===== Main Scroll Area (Kiosk UI) ===== -->
+    <ScrollView
+        android:id="@+id/kioskScrollArea"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintTop_toBottomOf="@id/topStatusArea">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/containerCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"/>
+
+            <!-- Switches -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_disable_device"
+                    android:textSize="22sp" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchEscrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_disable_escrow"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insert_cash"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="#8E0657"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Cash Icon -->
+            <ImageView
+                android:id="@+id/imageCashIcon"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:src="@drawable/ic_insert_cash"
+                android:contentDescription="@string/insert_cash_icon"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Insert Instruction -->
+            <TextView
+                android:id="@+id/insertedSelectedAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insert_cash_instruction"
+                android:textSize="23sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Note Counters -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <!-- ₹50 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="8dp">
+
+                    <TextView
+                        android:id="@+id/labelFifty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rupees_fifty"
+                        android:textSize="18sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/countFifty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero_count"
+                        android:textSize="14sp"
+                        android:textColor="#8E0657" />
+                </LinearLayout>
+
+                <!-- ₹100 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="8dp">
+
+                    <TextView
+                        android:id="@+id/labelHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rupees_one_hundred"
+                        android:textSize="18sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/countHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero_count"
+                        android:textSize="14sp"
+                        android:textColor="#8E0657" />
+                </LinearLayout>
+
+                <!-- ₹200 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="8dp">
+
+                    <TextView
+                        android:id="@+id/labelTwoHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rupees_two_hundred"
+                        android:textSize="18sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/countTwoHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero_count"
+                        android:textSize="14sp"
+                        android:textColor="#8E0657" />
+                </LinearLayout>
+
+                <!-- ₹500 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_margin="8dp">
+
+                    <TextView
+                        android:id="@+id/labelFiveHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rupees_five_hundred"
+                        android:textSize="18sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/countFiveHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero_count"
+                        android:textSize="14sp"
+                        android:textColor="#8E0657" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Inserted Amount -->
+            <TextView
+                android:id="@+id/insertedAmountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inserted_amount"
+                android:textSize="18sp"
+                android:textColor="#8E0657"
+                android:textStyle="bold" />
+
+            <!-- Disconnect Button -->
+            <Button
+                android:id="@+id/buttonDisconnect"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnect" />
+
+            <LinearLayout
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <Button
+                    android:id="@+id/buttonPay"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pay"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/buttonFloat"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_float"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/buttonEmpty"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <Button
+                    android:id="@+id/buttonCancel"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/buttonConfirm"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ===== Debug Section ===== -->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/debugSection"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="8dp"-->
+<!--        android:background="#EEE"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_cash_scan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/scan_cash_devices" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_cash_connect"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/connect_to_pax" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_cash_disconnect"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/disconnect_pax" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_cash_reconnect"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/reconnect_pax" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_cash_log"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:background="#DDD"-->
+<!--            android:text="@string/cash_log"-->
+<!--            android:padding="8dp" />-->
+<!--    </LinearLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

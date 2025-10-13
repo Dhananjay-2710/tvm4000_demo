@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Content scrollable area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewCount">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/header_toolbar"
+                android:id="@+id/include_toolbar"/>
+
+            <!-- General status -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:text="Status..."
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Printer readiness -->
+            <TextView
+                android:id="@+id/tvReadiness"
+                android:text="Readiness..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="#DDD"
+                tools:ignore="HardcodedText" />
+
+            <!-- Printer info section -->
+            <TextView
+                android:id="@+id/tvPrinterName"
+                android:text="Name: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvPrinterModel"
+                android:text="Model: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvPrinterSN"
+                android:text="Serial: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Ribbon info -->
+            <TextView
+                android:id="@+id/tvRibbonDesc"
+                android:text="Ribbon: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvRibbonType"
+                android:text="Type: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvRibbonRemaining"
+                android:text="Remaining: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText"/>
+
+            <!-- Cleaning info -->
+            <TextView
+                android:id="@+id/tvCleanCount"
+                android:text="Cards before warning: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvCleanUnderWarranty"
+                android:text="Head warranty: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/tvCleanRegular"
+                android:text="Regular clean count: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/tvCleanAdvanced"
+                android:text="Advanced clean count: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="HardcodedText"/>
+
+            <!-- Feeder selection -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginTop="12dp"
+                android:gravity="center">
+
+                <RadioGroup
+                    android:id="@+id/rgFeeder"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/rbFeederA"
+                        android:text="Airtel Bank Card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText"/>
+
+                    <RadioButton
+                        android:id="@+id/rbFeederB"
+                        android:text="HDFC Bank Card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText"/>
+
+                    <RadioButton
+                        android:id="@+id/rbFeederC"
+                        android:text="NSDL Bank Card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText"/>
+
+                    <RadioButton
+                        android:id="@+id/rbFeederD"
+                        android:text="BMRCL Card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText"/>
+                </RadioGroup>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvFeederStatus"
+                android:text="Feeder selected: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText"
+                android:gravity="center"/>
+
+            <!-- Card preview -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/imgFeeder"
+                    android:layout_width="300dp"
+                    android:layout_height="180dp"
+                    android:scaleType="fitXY"
+                    android:background="#EEE"
+                    android:layout_marginTop="12dp"
+                    tools:ignore="ContentDescription"/>
+
+                <ImageView
+                    android:id="@+id/ivUserPhoto"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+            <!-- Action buttons -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    style="?android:attr/buttonBarStyle"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    tools:ignore="UselessParent">
+
+                    <Button
+                        android:id="@+id/btnRefresh"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="Refresh"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText" />
+
+                    <Button
+                        android:id="@+id/btnPrint"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="Print"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        tools:ignore="HardcodedText" />
+
+                    <Button
+                        android:id="@+id/btnEject"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="Eject"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText" />
+
+                    <Button
+                        android:id="@+id/btnRead"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="Read"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        tools:ignore="HardcodedText"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="350dp"
+            android:minHeight="250dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/progress_message_bg">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleLarge" />
+
+            <TextView
+                android:id="@+id/progressMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:text="Loading..."
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

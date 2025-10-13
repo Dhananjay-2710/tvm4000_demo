@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">Final_Demo</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="cash_acceptor">Cash Acceptor</string>
+    <string name="card_printer">Card Printer</string>
+    <string name="pax">PAX</string>
+    <string name="devices">Devices</string>
+    <string name="refresh">Refresh</string>
+    <string name="log">Log...</string>
+    <string name="scan_pax_devices">Scan PAX Devices</string>
+    <string name="scan_cash_devices">Scan Cash Devices</string>
+    <string name="connect_to_pax">Connect to PAX</string>
+    <string name="cash_log">Log...</string>
+    <string name="pax_log">Log...</string>
+    <string name="disconnect_pax">Disconnect PAX</string>
+    <string name="reconnect_pax">Reconnect PAX</string>
+    <string name="usb_device_log">USB Device Log...</string>
+    <string name="gpio_pins">GPIO Pins</string>
+    <string name="usb_devices">USB Devices</string>
+    <string name="log_output">Log Output:</string>
+    <string name="logs_will_appear_here">Logs will appear here...</string>
+    <string name="gpio_discovery_mode">GPIO Discovery Mode</string>
+    <string name="refresh_list">Refresh List</string>
+    <string name="pax_demo">PAX Demo</string>
+    <string name="card_issueance_demo">Card Issuance Demo</string>
+    <string name="cash_acceptor_demo">Cash Acceptor Demo</string>
+    <string name="thermal_printer_demo">Thermal Printer Demo</string>
+    <string name="device_list">USB Devices And GPIO Setting</string>
+    <string name="scan">Scan</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="reconnect">Reconnect</string>
+    <string name="execute">Execute</string>
+    <string name="waiting_for_connection">Waiting For Connection</string>
+    <string name="enable_disable_device">Enable/Disable Device</string>
+    <string name="enable_disable_escrow">Enable/Disable Escrow</string>
+    <string name="insert_note_inserted">Inserted note is ₹100</string>
+    <string name="Continue">Continue</string>
+    <string name="skip">Skip</string>
+    <string name="pay">Pay</string>
+    <string name="button_float">Float</string>
+    <string name="empty">Empty</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_app">My App</string>
+    <string name="no_file_data_error">No file data!</string>
+    <string name="cash">Cash</string>
+    <string name="UPI">UPI</string>
+    <string name="credit_debit_card">Credit / Debit Card</string>
+    <string name="select_payment_option">Select Payment Option</string>
+    <string name="go_back">Go Back</string>
+    <string name="show_popup">Show Popup</string>
+    <string name="insert_cash">Insert Cash\nfor Top-Up</string>
+    <string name="insert_cash_icon">Insert Cash Icon</string>
+    <string name="insert_cash_instruction">Please insert ₹ 150 in cash.</string>
+    <string name="insert_cash_instruction_another">One note at a time. Coins are not accepted.</string>
+    <string name="inserted_amount">Inserted: ₹0 / ₹150</string>
+    <string name="accepted_notes">Accepted Notes:</string>
+    <string name="rupees_five_hundred">₹500</string>"
+    <string name="rupees_two_hundred">₹200</string>
+    <string name="rupees_one_hundred">₹100</string>
+    <string name="rupees_fifty">₹50</string>
+    <string name="zero_count">0x</string>
+    <string name="this_app_requires_access_to_the_downloads_directory_in_order_to_load_download_files">This app requires access to the downloads directory in order to load download files.</string>
+    <string name="metro_banner_desc">Metro Banner Desc</string>
+    <string name="ticket_preview">Ticket preview</string>
+    <string name="print_ticket">Print Ticket</string>
+    <string name="gpio_4">GPIO 4</string>
+    <string name="gpio_3">GPIO 3</string>
+    <string name="gpio_2">GPIO 2</string>
+    <string name="gpio_1">GPIO 1</string>
+    <string name="gpio_5">GPIO 5</string>
+    <string name="gpio_6">GPIO 6</string>
+    <string name="gpio_7">GPIO 7</string>
+    <string name="gpio_8">GPIO 8</string>
+    <string name="gpio_9">GPIO 9</string>
+    <string name="gpio_10">GPIO 10</string>
+    <string name="gpio_11">GPIO 11</string>
+    <string name="arm_alarm">Arm Alarm</string>
+    <string name="please_wait">Please wait...</string>
+
+</resources>

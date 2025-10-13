@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="currencyText">#000000</color>
+    <color name="no_data_text">#888888</color>
+    <color name="purple_700">#2D0337</color>
+    <color name="primary_color">#E9CA31E5</color>
+</resources>
