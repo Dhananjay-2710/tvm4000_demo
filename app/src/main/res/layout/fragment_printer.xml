@@ -140,10 +140,10 @@
 
                     <RadioButton
                         android:id="@+id/rbFeederA"
-                        android:text="Airtel Bank Card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:ignore="HardcodedText"/>
+                        android:text="Airtel Bank Card"
+                        tools:ignore="HardcodedText" />
 
                     <RadioButton
                         android:id="@+id/rbFeederB"

@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- ✅ Required for USB host communication -->
     <uses-feature android:name="android.hardware.usb.host" android:required="true" />
-    <uses-permission android:name="android.permission.USB_PERMISSION" />
+
+    <!-- ⚠️ This permission name is not valid; remove or replace -->
+    <!-- <uses-permission android:name="android.permission.USB_PERMISSION" /> -->
+    <!-- ✅ Only these are real permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
@@ -17,6 +22,7 @@
         android:theme="@style/Theme.Final_Demo"
         tools:targetApi="31">
 
+        <!-- ✅ Main Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -27,66 +33,47 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".usbdevicelist.DeviceListActivity"
+        <!-- ✅ One activity can receive attach intent; that’s enough -->
+        <!-- If you want all devices (cash acceptor, printer, etc.) to open the same UI,
+             keep one receiver activity and handle logic inside -->
+        <activity
+            android:name=".usbdevicelist.DeviceListActivity"
             android:exported="true"
             android:theme="@style/Theme.Final_Demo">
+
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
+            <!-- ✅ Correct meta-data key for USB filters -->
             <meta-data
                 android:name="android.hardware.usb.device_filter"
                 android:resource="@xml/device_filter" />
         </activity>
 
+        <!-- ✅ Other activities don’t need the USB intent-filter unless they must auto-launch -->
         <activity android:name=".pax.PaxActivity"
             android:exported="true"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.Final_Demo">
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.hardware.usb.device_filter"
-                android:resource="@xml/device_filter" />
-        </activity>
+            android:theme="@style/Theme.Final_Demo" />
 
         <activity android:name=".card_printer.CardPrinterActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo">
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.hardware.usb.device_filter"
-                android:resource="@xml/device_filter" />
-        </activity>
+            android:theme="@style/Theme.Final_Demo" />
 
         <activity android:name=".thermal_printer.ThermalPrinterActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo">
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.hardware.usb.device_filter"
-                android:resource="@xml/device_filter" />
-        </activity>
+            android:theme="@style/Theme.Final_Demo" />
 
         <activity android:name=".cash_acceptor.CashAcceptorActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo">
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.hardware.usb.device_filter"
-                android:resource="@xml/device_filter" />
-        </activity>
-    </application>
+            android:theme="@style/Theme.Final_Demo" />
 
+        <!-- ✅ This line is required and correct -->
+        <meta-data
+            android:name="android.hardware.usb.host"
+            android:resource="@xml/device_filter" />
+
+    </application>
 </manifest>

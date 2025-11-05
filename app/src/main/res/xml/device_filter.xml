@@ -3,5 +3,10 @@
     <usb-device vendor-id="12216" />
     <usb-device vendor-id="8401" />
     <usb-device vendor-id="3913" />
+    <usb-device vendor-id="8746" />
+    <usb-device vendor-id="1027" />
+    <usb-device vendor-id="6428" />
+    <usb-device vendor-id="13030" />
+    <usb-device vendor-id="11279" />
     <usb-device class="3" />
 </resources>
