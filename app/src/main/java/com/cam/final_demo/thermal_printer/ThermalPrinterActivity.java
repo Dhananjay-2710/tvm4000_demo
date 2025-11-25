@@ -1,8 +1,15 @@
 package com.cam.final_demo.thermal_printer;
 
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,12 +27,15 @@ import com.cam.final_demo.R;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThermalPrinterActivity extends AppCompatActivity {
     private static final String TAG = "ThermalPrinterActivity";
     private ImageView ivTicket;
+
+    private static final int TARGET_VID = 8401;
     private Button btnPrintTicket;
     private Bitmap ticketBitmap;
     private boolean printerAvailable = false;
@@ -49,6 +59,28 @@ public class ThermalPrinterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermal_printer);
+
+        UsbDevice printerDevice = findThermalPrinterDevice();
+        UsbManager usbManager = (UsbManager) getSystemService(USB_SERVICE);
+
+        if (printerDevice == null) {
+            Toast.makeText(this, "No Thermal Printer found (VID 8401)", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!usbManager.hasPermission(printerDevice)) {
+            PendingIntent permissionIntent =
+                    PendingIntent.getBroadcast(this, 0, new Intent("USB_PERMISSION"), PendingIntent.FLAG_IMMUTABLE);
+
+            IntentFilter filter = new IntentFilter("USB_PERMISSION");
+            registerReceiver(usbReceiver, filter);
+
+            usbManager.requestPermission(printerDevice, permissionIntent);
+        } else {
+            // we already have permission, init immediately
+            initializeThermalPrinter();
+        }
+
 
         ivTicket = findViewById(R.id.ivTicket);
         btnPrintTicket = findViewById(R.id.btnPrintTicket);
@@ -137,6 +169,52 @@ public class ThermalPrinterActivity extends AppCompatActivity {
             });
         });
     }
+
+    private final BroadcastReceiver usbReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("USB_PERMISSION".equals(intent.getAction())) {
+                UsbDevice device = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+
+                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                    Log.i(TAG, "USB Permission granted for → " + device.getDeviceName());
+                    initializeThermalPrinter();
+                } else {
+                    Toast.makeText(context, "USB Permission DENIED", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    };
+
+    private void initializeThermalPrinter() {
+        ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage("Initializing Thermal Printer...");
+        pd.setCancelable(false);
+        pd.show();
+
+        bg.submit(() -> {
+            boolean ok = false;
+            try {
+                ok = thermalPrinter.initUsbDevicesNew(getApplicationContext());
+            } catch (Exception e) {
+                Log.e(TAG, "Init failed", e);
+            }
+
+            boolean finalOk = ok;
+            runOnUiThread(() -> {
+                pd.dismiss();
+                printerAvailable = finalOk;
+
+                if (finalOk) {
+                    Toast.makeText(this, "Printer READY", Toast.LENGTH_SHORT).show();
+                    btnPrintTicket.setEnabled(true);
+                } else {
+                    Toast.makeText(this, "Thermal Printer init FAILED", Toast.LENGTH_LONG).show();
+                }
+            });
+        });
+    }
+
 
     public void printImage(final Bitmap bitmap, final int light, final int size, final boolean isRotate, final int sype, final boolean isLzo) {
 
@@ -301,6 +379,27 @@ public class ThermalPrinterActivity extends AppCompatActivity {
             Toast.makeText(this, "System print failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
+    private UsbDevice findThermalPrinterDevice() {
+        UsbManager usbManager = (UsbManager) getSystemService(USB_SERVICE);
+        if (usbManager == null) return null;
+
+        HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
+
+        for (UsbDevice device : deviceList.values()) {
+            int vid = device.getVendorId();
+            int pid = device.getProductId();
+            Log.i(TAG, "Found USB Device → VID=" + vid + " PID=" + pid);
+
+            if (vid == TARGET_VID) {  // 8401
+                Log.i(TAG, "🎯 Thermal printer matched → " + device.getDeviceName());
+                return device;
+            }
+        }
+
+        return null;
+    }
+
 
     @Override
     protected void onDestroy() {

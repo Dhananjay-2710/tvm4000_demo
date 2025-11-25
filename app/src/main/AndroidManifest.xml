@@ -12,6 +12,7 @@
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
+        android:directBootAware="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -41,14 +42,24 @@
             android:exported="true"
             android:theme="@style/Theme.Final_Demo">
 
+<!--            <intent-filter>-->
+<!--                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+
+<!--            &lt;!&ndash; ✅ Correct meta-data key for USB filters &ndash;&gt;-->
+<!--            <meta-data-->
+<!--                android:name="android.hardware.usb.device_filter"-->
+<!--                android:resource="@xml/device_filter" />-->
             <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <!-- ✅ Correct meta-data key for USB filters -->
+            <meta-data android:name="android.hardware.usb.action.USB_STATE"
+                android:resource="@xml/device_filter" />
             <meta-data
-                android:name="android.hardware.usb.device_filter"
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
 
@@ -56,19 +67,63 @@
         <activity android:name=".pax.PaxActivity"
             android:exported="true"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.Final_Demo" />
+            android:theme="@style/Theme.Final_Demo" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data android:name="android.hardware.usb.action.USB_STATE"
+                android:resource="@xml/device_filter" />
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
 
         <activity android:name=".card_printer.CardPrinterActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo" />
+            android:theme="@style/Theme.Final_Demo" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data android:name="android.hardware.usb.action.USB_STATE"
+                android:resource="@xml/device_filter" />
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
 
         <activity android:name=".thermal_printer.ThermalPrinterActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo" />
+            android:theme="@style/Theme.Final_Demo" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data android:name="android.hardware.usb.action.USB_STATE"
+                android:resource="@xml/device_filter" />
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
 
         <activity android:name=".cash_acceptor.CashAcceptorActivity"
             android:exported="true"
-            android:theme="@style/Theme.Final_Demo" />
+            android:theme="@style/Theme.Final_Demo" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data android:name="android.hardware.usb.action.USB_STATE"
+                android:resource="@xml/device_filter" />
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
 
         <!-- ✅ This line is required and correct -->
         <meta-data
